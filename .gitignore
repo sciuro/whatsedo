@@ -6,3 +6,6 @@ conf/willie.cfg
 
 # Don't ignore gitignore
 !.gitignore
+
+# Ignore *.pyc
+*.pyc
