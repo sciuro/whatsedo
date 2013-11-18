@@ -1,5 +1,8 @@
 # Ignoring logging directory
 logs/*
 
+# Ignore the running willie config file
+conf/willie.cfg
+
 # Don't ignore gitignore
 !.gitignore
