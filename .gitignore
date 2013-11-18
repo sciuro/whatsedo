@@ -1,0 +1,5 @@
+# Ignoring logging directory
+logs/*
+
+# Don't ignore gitignore
+!.gitignore
