@@ -1,0 +1,3 @@
+#!/bin/bash
+
+python willie/willie.py --config=conf/whatsedo.cfg -d --quiet
