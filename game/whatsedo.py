@@ -2,34 +2,40 @@ from willie import module
 import time
 
 # Variables
-players = []
-game = {}
-game['status'] = 0
-game['awnser'] = 0
-game['round'] = 0
-game['awnserok'] = []
-game['solved'] = []
-settings = {}
-settings['minplayers'] = 1
-settings['channel'] = "#whatsedo"
-settings['wa_user'] = "whatsedo_wa"
-settings['admin'] = "Your_own_IRC_User"
-settings['walktime'] = 10
-settings['playtime'] = 5
-settings['gamequestion'] = "De hoofdvraag is: Wie is waar met het touw vermoord."
-solution = {
-'person':'crofts',
-'place':'mariaplaats',
-'weapon':'touw'
-}
-locations = {
-1:['Vredenburg/uitgang Catharijne', 'Een camera kijkt hier uit op een bord wat meestal (niet hier) info over Utrecht staat. Wat is zijn ID nummer?', 'mu01326', 'Op het Neude werd iemand met gif vermoord, maar niet door Crofts'],
-2:['Zandbrug', 'Deze brug bevat een oude Duitse bunker. Echter in de 80 jarige oorlog was er hier ook een verzetsvrouw. In welk jaar gaf ze de opdracht kasteel Vredenburg te slopen?', '1577', 'Beatrix was in de stationshal, maar niet met het touw'],
-3:['Domplein', 'Jan van Nassau (broer van Willem van Oranje) was 1 van de oprichters van de Unie van Utrecht, het begin van het huidige Nederland. In welke zaal werd dit verdrag getekend?', 'kapittelzaal', 'Op het Domplein lag geen pistool'],
-4:['Sonnenborgh - Museum & Sterrenwacht', 'Deze sterrenwacht werd samen met het KNMI door wie opgericht? (twee woorden)', 'buys ballot', 'Van Krimpen was op het domplein, zonder touw.'],
-5:['Louis Hartlooper Complex (Tolsteegbrug)', 'Waarmee ondertekende de persoon die ook schreef: ANNO DOMINI MIXD', 'sdj95', 'Labre had dynamiet, echter niet op de mariaplaats.'],
-6:['Klein park achter Tivoli Oude Gracht', 'Er staat hier een oud pandhuis (bank van leningen). Wat was voor 1713 de functie van dit gebouw? (1 woord)', 'graanpakhuis', 'Op het vredenburg lag dynamiet. Masselman was op het Neude.']
-}
+def setup(bot):
+    """
+    Setup all the variables
+    """
+    global players, game, settings, solution, locations
+    
+    players = []
+    game = {}
+    game['status'] = 0
+    game['awnser'] = 0
+    game['round'] = 0
+    game['awnserok'] = []
+    game['solved'] = []
+    settings = {}
+    settings['minplayers'] = int(bot.config.whatsedo.minplayers)
+    settings['channel'] = bot.config.core.channels
+    settings['wa_user'] = bot.config.whatsedo.whatsappuser
+    settings['admin'] = bot.config.core.owner
+    settings['walktime'] = int(bot.config.whatsedo.walktime)
+    settings['playtime'] = int(bot.config.whatsedo.playtime)
+    settings['gamequestion'] = bot.config.whatsedo.gamequestion
+    solution = {
+    'person':bot.config.whatsedo.person,
+    'place':bot.config.whatsedo.place,
+    'weapon':bot.config.whatsedo.weapon
+    }
+    locations = {
+    1:['Vredenburg/uitgang Catharijne', 'Een camera kijkt hier uit op een bord wat meestal (niet hier) info over Utrecht staat. Wat is zijn ID nummer?', 'mu01326', 'Op het Neude werd iemand met gif vermoord, maar niet door Crofts'],
+    2:['Zandbrug', 'Deze brug bevat een oude Duitse bunker. Echter in de 80 jarige oorlog was er hier ook een verzetsvrouw. In welk jaar gaf ze de opdracht kasteel Vredenburg te slopen?', '1577', 'Beatrix was in de stationshal, maar niet met het touw'],
+    3:['Domplein', 'Jan van Nassau (broer van Willem van Oranje) was 1 van de oprichters van de Unie van Utrecht, het begin van het huidige Nederland. In welke zaal werd dit verdrag getekend?', 'kapittelzaal', 'Op het Domplein lag geen pistool'],
+    4:['Sonnenborgh - Museum & Sterrenwacht', 'Deze sterrenwacht werd samen met het KNMI door wie opgericht? (twee woorden)', 'buys ballot', 'Van Krimpen was op het domplein, zonder touw.'],
+    5:['Louis Hartlooper Complex (Tolsteegbrug)', 'Waarmee ondertekende de persoon die ook schreef: ANNO DOMINI MIXD', 'sdj95', 'Labre had dynamiet, echter niet op de mariaplaats.'],
+    6:['Klein park achter Tivoli Oude Gracht', 'Er staat hier een oud pandhuis (bank van leningen). Wat was voor 1713 de functie van dit gebouw? (1 woord)', 'graanpakhuis', 'Op het vredenburg lag dynamiet. Masselman was op het Neude.']
+    }
 
 
 # Make the good guys better
