@@ -2,7 +2,7 @@
 logs/*
 
 # Ignore the running willie config file
-conf/willie.cfg
+conf/whatsedo.cfg
 
 # Don't ignore gitignore
 !.gitignore
