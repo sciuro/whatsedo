@@ -1,3 +1,6 @@
 [submodule "willie"]
 	path = willie
 	url = https://github.com/embolalia/willie.git
+[submodule "breakbot"]
+	path = breakbot
+	url=https://github.com/sciuro/breakbot.git
