@@ -1,0 +1,20 @@
+{
+    "contacts": {
+        "34555555530-1321985629@g.us": "#whatsedo",
+        "34555555125": "Whatsedo_wa",
+        "34555555530": "person1",
+        "34555555373": "person2",
+        "34555555806": "person3",
+        "34555555565": "person4",
+        "34555555602": "person5"
+    },
+    "config": {
+        "wa_phone": "34555555125",
+        "wa_password": "Your_whatsapp_password",
+        "irc_nick": "Whatsedo_wa",
+        "irc_server_name": "irc.server",
+        "irc_server_port": "6667",
+        "bot_owner_nick": "person1",
+        "log_file": "log.txt"
+    }
+}

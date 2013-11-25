@@ -3,6 +3,7 @@ logs/*
 
 # Ignore the running willie config file
 conf/whatsedo.cfg
+conf/whatsapp.json
 
 # Don't ignore gitignore
 !.gitignore
